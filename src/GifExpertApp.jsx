@@ -1,10 +1,11 @@
 //rafc
 import {useState} from 'react'
 import { AddCategory } from './components/AddCategory';
+import { GifGrid } from './components/GifGrid';
 
 export const GifExpertApp = () => {
 
-    const [categories, setCategories] = useState([ 'One Punch', 'Dragon Ball' ]);
+    const [categories, setCategories] = useState([ 'One Punch', 'Pac Man' ]);
     const onAddCategory = (newValue) => {
         // valida que no se añada una categoria existente
         if(categories.includes(newValue)) return;
@@ -18,11 +19,13 @@ export const GifExpertApp = () => {
             //setCategories={ setCategories }
             onNewCategory = { onAddCategory }
         />
-        <ol>
-            { categories.map(category => {
-                return <li key={category}>{category}</li>;
-            }) }
-        </ol>
+            { categories.map(category => (
+                    <GifGrid 
+                        key={ category } 
+                        category={ category }
+                    />
+                )
+            ) }
     </>
   )
 }
